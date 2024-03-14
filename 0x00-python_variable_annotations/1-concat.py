@@ -2,5 +2,5 @@
 """concat function"""
 
 
-def concat(str1: string, str2: string) -> string:
+def concat(str1: str, str2: str) -> str:
     return f"{str1}{str2}"
