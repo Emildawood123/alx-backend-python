@@ -7,7 +7,4 @@ Num = Union[int, float]
 
 def sum_mixed_list(mxd_lst: List[Num]) -> float:
     """sum_mixed_list function"""
-    res: float = 0.00
-    for i in input_list:
-        res = res + i
-    return res
+    return sum(mxd_lst)
