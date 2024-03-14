@@ -8,6 +8,7 @@ abbr2 = Union[Any, tV]
 
 
 def safely_get_value(dct: Mapping, key: Any, default: abbr = None) -> abbr2:
+    """safely_get_value function"""
     if key in dct:
         return dct[key]
     else:
