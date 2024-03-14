@@ -3,7 +3,7 @@
 
 
 def sum_list(input_list: list[float]) -> float:
-    """sumList fun"""
+    """sum_list function"""
     res: float = 0.00
     for i in input_list:
         res = res + i
