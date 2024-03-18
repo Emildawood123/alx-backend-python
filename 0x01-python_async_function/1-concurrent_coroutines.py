@@ -2,13 +2,15 @@
 """wait n function"""
 import asyncio
 import random
+from typing import List
 
-wait_random = __import__('0-basic_async_syntax.py').wait_random
+wait_random = __import__('0-basic_async_syntax').wait_random
 
 
-async def wait_n(n, max_delay):
+async def wait_n(n: int, max_delay: int) -> List[float]:
     """wait random function"""
-    arr = []
+    arr: List[float] = []
     for i in range(0, n):
-        arr.append(wait_random(max_delay))
+        val = wait_random(max_delay)
+        arr.append(await val)
     return arr
