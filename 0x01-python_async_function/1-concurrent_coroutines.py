@@ -10,5 +10,5 @@ async def wait_n(n, max_delay):
     """wait random function"""
     arr = []
     for i in range(0, n):
-        await arr.append(wait_random(max_delay))
+        arr.append(wait_random(max_delay))
     return arr
