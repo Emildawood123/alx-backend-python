@@ -64,6 +64,7 @@ class TestMemoize(unittest.TestCase):
                 return self.a_method()
 
         with patch.object(TestClass, "a_method") as mock_a:
+            """patch object comment"""
             mock_a.return_value = 10
             instance = TestClass()
             result = instance.a_property
