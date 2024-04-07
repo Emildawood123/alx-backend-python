@@ -22,7 +22,7 @@ class TestGithubOrgClient(unittest.TestCase):
         get_mock.return_value = res
         self.assertEqual(res, initailize.org)
         get_mock.assert_called_once()
-    
+
     @parameterized.expand(
         [
             ({"license": {"key": "my_license"}}, "my_license", True),
@@ -31,15 +31,18 @@ class TestGithubOrgClient(unittest.TestCase):
     )
     def test_has_license(self, repo, license_key, expected):
         """test_has_license"""
-        self.assertEqual(expected, client.GithubOrgClient.has_license(repo, license_key))
-    
+        re_fun = client.GithubOrgClient.has_license(repo, license_key)
+        self.assertEqual(expected, re_fun)
+
     @patch("client.get_json")
     def test_public_repos(self, get_mock_json):
         """test_public_repos method"""
         get_mock_json.return_value = "www.test.com"
-        with  patch('client.GithubOrgClient._public_repos_url') as mock:
+        with patch('client.GithubOrgClient._public_repos_url') as mock:
+            """patch context"""
             mock.return_value = {"repos": ["r1", "r2", "r3", "...etc"]}
-            self.assertEqual(client.GithubOrgClient("test").repos_payload, get_mock_json.return_value)
+            inp = client.GithubOrgClient("test").repos_payload
+            self.assertEqual(inp, get_mock_json.return_value)
             get_mock_json.assert_called_once()
 
 
