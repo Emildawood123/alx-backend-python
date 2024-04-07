@@ -32,6 +32,15 @@ class TestGithubOrgClient(unittest.TestCase):
     def test_has_license(self, repo, license_key, expected):
         """test_has_license"""
         self.assertEqual(expected, client.GithubOrgClient.has_license(repo, license_key))
+    
+    @patch("client.get_json")
+    def test_public_repos(self, get_mock_json):
+        """test_public_repos method"""
+        get_mock_json.return_value = "www.test.com"
+        with  patch('client.GithubOrgClient._public_repos_url') as mock:
+            mock.return_value = {"repos": ["r1", "r2", "r3", "...etc"]}
+            self.assertEqual(client.GithubOrgClient("test").repos_payload, get_mock_json.return_value)
+            get_mock_json.assert_called_once()
 
 
 class TestIntegrationGithubOrgClient(unittest.TestCase):
